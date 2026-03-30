@@ -1,0 +1,159 @@
+PART – B
+
+Task 20. Design a data structure that internally uses HashMap that follows the constraints of a Least Recently Used (LRU) cache.
+
+Implement the LRUCache class:
+
+LRUCache(int capacity) 
+Initialize the LRU cache with positive size capacity.
+
+int get(int key)    
+Return the value of the key if the key exists, otherwise return -1.
+
+void put(int key, int value)    
+Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+
+Sample Input-1:
+["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Sample Output-1: 
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);  // Object creation
+
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+
+
+
+
+
+Task 21. For Given Number A, find if it's a COLORFUL number or not. [Hint: Use HashSet]
+Definition of COLORFUL number:
+A number can be broken into different contiguous sub-subsequence parts. 
+Suppose, a number 3245 can be broken into parts like 3 2 4 5 32 24 45 324 245. 
+And this number is a COLORFUL number, since product of every digit of a contiguous subsequence is different. Return 1 if A is a COLORFUL number, else return 0. 
+Problem Constraints
+0 <= A <= 109
+
+Input Format
+The first argument is an integer A.
+Output Format
+Return 1 if A is a COLORFUL number, else return 0
+
+Sample Input-1:
+A = 23
+Sample Output-1:
+1
+Explanation
+A = 23
+2 3 23
+2 -> 2
+3 -> 3
+23 -> 6. This number 23 is a COLORFUL number since the product of every digit of a sub-sequence is different.
+
+Task 22. Google needs to schedule meetings in different rooms. Each meeting has a startTime and endTime. You are given a list of meetings. Determine the minimum number of meeting rooms required so that all meetings can take place without overlap. Use TreeMap to track ongoing meetings efficiently
+
+Sample Input-1:
+3
+30 75
+0 50
+60 150
+Sample Output-1:
+2
+
+Task 23. Given a list of items, each with a name and a rating, the task is to: 
+Filter items with rating greater than or equal to a specified threshold (e.g., 8.0).Sort the filtered items by rating in descending order.
+If two items have the same rating, sort them lexicographically by name. The items should be stored and manipulated using ArrayList to allow dynamic operations.
+Sample Input-1:
+5
+ItemA 8.8
+ItemB 7.5
+ItemC 8.6
+ItemD 7.9
+ItemE 8.4
+
+Sample Output-1:
+ItemA 8.8
+ItemC 8.6
+ItemE 8.4
+
+Task 24.A streaming platform has a RecommendationEngine class that generates movie recommendations based on user preferences.
+Write JUnit tests to cover:
+Users with no watch history
+Users with only one watched movie
+Users with identical ratings across multiple genres
+Users with extremely large watch history (stress test)
+Input Format:
+User = new User("user1", new ArrayList<>());
+Output Format:
+Ensure recommendations always return at least 5 movies if possible.
+
+JUnit Assertion Example:
+List<Movie> recommendations = engine.getRecommendations(user);
+assertNotNull(recommendations);
+assertTrue(recommendations.size() >= 5);
+
+Task 25. A company develops a MathUtils class containing methods for: Finding the maximum subarray sum, Computing prefix sums of an array, Performing frequency counting of elements. Write JUnit 5 unit tests for these methods covering:
+ Empty input arrays
+ Arrays with negative/positive numbers 
+ Very large arrays (stress testing)
+Input Format-1:
+Arrays passed programmatically in test cases
+Output Format-1:
+Test report indicating pass/fail for all scenarios
+
+Task 26. A UserAnalytics class processes a list of users with attributes like age, location, and activity score.The class uses Streams API and Lambda expressions to filter active users and compute average scores.A bug is causing incorrect averages for certain edge cases (empty list or all inactive users).Use IDE debugging tools (breakpoints, conditional breakpoints, step in/out) to identify and fix the bug.
+Input Format:
+Programmatically created list of user objects
+Output Format:
+Correct average score and fixed filtering
+
+
+Task 27. A streaming platform logs events (e.g., play, pause, skip) for millions of users.Implement a LoggingService using Log4j:INFO for normal events,WARN for repeated fast events, ERROR for system failures (e.g., null event).Write JUnit tests to validate that correct log levels are generated for different scenarios.
+Input Format:
+Simulated event objects in test cases
+
+Output Format:
+Log output verification in console or file
+
+A banking application allows multiple users to perform transactions (deposit and withdraw) on the same account simultaneously.Design an AccountService class with the following methods:
+Boolean deposit(int amount)
+Boolean withdraw(int amount)
+Float getBalance()
+The system must ensure thread safety, so that the final balance is always correct even when multiple threads access the account concurrently.Implement the AccountService class using proper synchronization techniques.
+Write JUnit 5 test cases to verify:
+•	Concurrent deposits do not cause incorrect balance updates.
+•	Concurrent withdrawals do not allow balance to go negative.
+•	Mixed deposit and withdrawal operations maintain data consistency.
+•	Perform a stress test using multiple threads (e.g., 100+ threads).
+•	Use IDE debugging tools and breakpoints to observe thread execution behavior.
+
+Input Format
+Initial balance is set programmatically.
+Transactions are simulated using multiple threads in test cases.
+
+Output Format
+Final account balance after all operations.
+JUnit test report showing pass/fail for concurrency scenarios.
+
+Task 28. A recommendation engine uses TreeMap to track top-N items for users based on frequency and ratings.Implement stress tests to handle:Very large input size (10^6 items),Frequent updates and queries,Log execution time using Log4j for performance verification.
+
+Input Format:
+Simulated item additions and queries
+
+Output Format:
+Performance logs
+Verification that top-N logic is correct
